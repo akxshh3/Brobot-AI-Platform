@@ -1,0 +1,90 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+}
+
+.node {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  transition: all var(--transition-spring);
+}
+
+.pending .node {
+  background: rgba(232, 244, 255, 0.05);
+  border: 1.5px solid rgba(232, 244, 255, 0.15);
+  color: var(--text-muted);
+}
+
+.active .node {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: none;
+  color: white;
+  box-shadow: 0 0 24px var(--glow-primary), 0 0 8px var(--glow-secondary);
+  animation: pulse3d 2s infinite;
+}
+
+.done .node {
+  background: rgba(0, 255, 136, 0.15);
+  border: 1.5px solid var(--accent-success);
+  color: var(--accent-success);
+}
+
+.line {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 18px);
+  right: calc(-50% + 18px);
+  height: 1.5px;
+  background: rgba(232, 244, 255, 0.1);
+  z-index: 1;
+}
+
+.lineInner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-success), var(--accent-primary));
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 6px var(--accent-success);
+}
+
+.num {
+  display: block;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.pending .label { color: var(--text-muted); }
+.active .label { color: var(--accent-primary); font-weight: 500; }
+.done .label { color: var(--accent-success); }
+
+@keyframes pulse3d {
+  0%, 100% { box-shadow: 0 0 24px var(--glow-primary), 0 0 8px var(--glow-secondary); }
+  50% { box-shadow: 0 0 40px var(--glow-primary), 0 0 20px var(--glow-secondary); }
+}

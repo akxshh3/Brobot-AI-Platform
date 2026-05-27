@@ -1,0 +1,19 @@
+.orbWrapper {
+  width: 420px;
+  height: 420px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .orbWrapper {
+    width: 280px;
+    height: 280px;
+  }
+}
